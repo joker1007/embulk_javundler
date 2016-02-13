@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "embulk_javundler/cli"
+
+EmbulkJavundler::Cli.start
