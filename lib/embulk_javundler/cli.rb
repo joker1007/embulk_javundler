@@ -9,8 +9,10 @@ require 'embulk_javundler/runner'
 module EmbulkJavundler
   class Cli < Thor
     desc "install", "install embulk java plugins"
+    method_option :path, type: :string
     def install
       lookup_embulk_plugin_file
+      EmbulkJavundler.install_dir = options[:path] if options[:path]
 
       java_plugins = parse_embulk_file(need_lock: false)
       java_plugins.each do |plugin|

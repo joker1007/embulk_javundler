@@ -15,7 +15,11 @@ module EmbulkJavundler
     end
 
     def install_dir
-      root.join("plugins", "java")
+      @install_dir || root.join("plugins", "java")
+    end
+
+    def install_dir=(install_dir)
+      @install_dir = root.join(install_dir)
     end
 
     def lock_file_path
