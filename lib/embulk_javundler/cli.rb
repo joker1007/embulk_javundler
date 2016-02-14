@@ -36,8 +36,9 @@ module EmbulkJavundler
       write_lock_file(java_plugins)
     end
 
-    desc "exec", "execute embulk run with installed java plugins"
-    def exec(*run_args)
+    desc "run", "execute embulk run with installed java plugins"
+    map "run" => "_run"
+    def _run(*run_args)
       lookup_embulk_plugin_file
 
       java_plugins = parse_embulk_file
