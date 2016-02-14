@@ -40,8 +40,7 @@ $ embulk_javundler install --path .plugins
 $ embulk_javundler preview config.yml
 
 # embulk run with installed java plugins
-# subcommand is "exec", not "run". this is thor restriction.
-$ embulk_javundler exec config.yml
+$ embulk_javundler run config.yml
 ```
 
 After install, this gem generates `Embulkfile.lock`.
