@@ -1,8 +1,7 @@
 # EmbulkJavundler
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/embulk_javundler`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+this gem installs embulk java plugins from git repository.
+And this gem run embulk command with installed java plugins.
 
 ## Installation
 
@@ -22,7 +21,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Write `Embulkfile`.
+
+ex.
+```
+java_plugin "embulk-input-jdbc", github: "joker1007/embulk-input-jdbc", commit: "support-json-type", libdir: "embulk-input-postgresql/lib"
+java_plugin "embulk-output-bigquery", github: "embulk/embulk-output-bigquery"
+```
+
+```sh
+# install plugins to "plugins/java" directory
+$ embulk_javundler install
+
+# install plugins to ".plugins" directory
+$ embulk_javundler install --path .plugins
+
+# embulk preview with installed java plugins
+$ embulk_javundler preview config.yml
+
+# embulk run with installed java plugins
+# subcommand is "exec", not "run". this is thor restriction.
+$ embulk_javundler exec config.yml
+```
+
+After install, this gem generates `Embulkfile.lock`.
+`Embulkfile.lock` is information of installed plugins.
 
 ## Development
 
@@ -32,5 +55,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/embulk_javundler.
+Bug reports and pull requests are welcome on GitHub at https://github.com/joker1007/embulk_javundler.
 
